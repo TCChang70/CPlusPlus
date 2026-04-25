@@ -106,7 +106,7 @@ int main() {
     
     cout << "a[0] = " << a[0] << endl;           // 輸出: 1
     cout << "*ptr = " << *ptr << endl;           // 輸出: 1
-    cout << "*(a + 2) = " << *(a + 2) << endl;   // 輸出: 4 (等同於 a[2])
+    cout << "*(ptr + 2) = " << *(a + 2) << endl;   // 輸出: 4 (等同於 a[2])
     
     return 0;
 }
