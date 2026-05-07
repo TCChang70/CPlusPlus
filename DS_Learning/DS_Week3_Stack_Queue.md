@@ -307,8 +307,8 @@ int maze[5][5] = {
 bool visited[5][5] = {false};
 
 // 上下左右四個方向
-int dx[] = {-1, 1, 0, 0};
-int dy[] = {0, 0, -1, 1};
+int dx[] = {-1, 1, 0, 0};  // dx row index row-1 向上 row+1 向下
+int dy[] = {0, 0, -1, 1};  // dy column index column-1 向左 column+1 向右
 
 void solveMaze(int startX, int startY, int endX, int endY) {
     stack<pair<int,int>> path;
