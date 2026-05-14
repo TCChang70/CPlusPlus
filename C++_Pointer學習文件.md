@@ -156,7 +156,7 @@ using namespace std;
 
 int main() {
     int arr[5] = {10, 20, 30, 40, 50};
-    int *p = arr;  // p 指向 arr[0]
+    int *p = arr;  // p 指向 &arr[0]
     
     cout << *p << endl;        // 10
     cout << *(p + 1) << endl;  // 20 (移動一個 int)
