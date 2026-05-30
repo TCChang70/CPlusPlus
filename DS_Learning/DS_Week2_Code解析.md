@@ -163,7 +163,14 @@ mergeSort(arr, left, right)
 ### 合併函式 `merge`
 
 ```cpp
+#include <vector>
+#include <iostream>
+using namespace std;
+
 void merge(int arr[], int left, int mid, int right) {
+    int n1 = mid - left + 1;
+    int n2 = right - mid;
+
     vector<int> L(arr + left, arr + left + n1);
     vector<int> R(arr + mid + 1, arr + mid + 1 + n2);
 
@@ -177,6 +184,31 @@ void merge(int arr[], int left, int mid, int right) {
     // 填入剩餘元素
     while (i < n1) arr[k++] = L[i++];
     while (j < n2) arr[k++] = R[j++];
+}
+
+void mergeSort(int arr[], int left, int right) {
+    if (left >= right) return;
+    int mid = left + (right - left) / 2;
+    mergeSort(arr, left, mid);  // 遞迴排序左半部
+    mergeSort(arr, mid + 1, right); // 遞迴排序右半部
+    merge(arr, left, mid, right);
+}
+
+int main() {
+    int arr[] = {38, 27, 43, 3, 9, 82, 10};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    cout << "排序前: ";
+    for (int i = 0; i < n; i++) cout << arr[i] << " ";
+    cout << endl;
+
+    mergeSort(arr, 0, n - 1);
+
+    cout << "排序後: ";
+    for (int i = 0; i < n; i++) cout << arr[i] << " ";
+    cout << endl;
+
+    return 0;
 }
 ```
 
