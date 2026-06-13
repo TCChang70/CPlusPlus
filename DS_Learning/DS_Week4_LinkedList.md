@@ -43,6 +43,22 @@ p = nullptr;            // 釋放後設 nullptr，防止懸空指標
 ### 3.1 節點結構
 
 ```cpp
+#ifndef NODE_H
+#define NODE_H
+
+#include <iostream>
+using namespace std;
+class Node{
+public:
+    int data;
+    Node* next;
+    Node(int data){
+        this->data = data;
+        this->next = nullptr;
+    }
+};
+#endif
+
 struct Node {
     int data;       // 資料欄位
     Node* next;     // 指標欄位，指向下一個節點
