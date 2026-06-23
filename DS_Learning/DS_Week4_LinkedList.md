@@ -135,7 +135,49 @@ Node* insertBack(Node* head, int val) {
 }
 ```
 
-### 3.5 刪除節點（刪除值為 target 的第一個節點）
+### 3.5 在中間插入節點
+
+```cpp
+// 在指定位置插入節點（0-based index，pos=0 等同 insertFront）
+Node* insertAt(Node* head, int val, int pos) {
+    if (pos == 0) {   // 插入頭部
+        Node* newNode = new Node(val);
+        newNode->next = head;
+        return newNode;
+    }
+
+    Node* newNode = new Node(val);
+    Node* curr = head;
+    for (int i = 0; curr != nullptr && i < pos - 1; i++)
+        curr = curr->next;
+
+    if (curr == nullptr) {   // 位置超出串列長度
+        delete newNode;
+        return head;
+    }
+
+    newNode->next = curr->next;
+    curr->next = newNode;
+    return head;
+}
+```
+
+**指標調整視覺化：**
+```
+插入前：[1] → [2] → [4] → NULL
+插入 3 到位置 2（0-based）：
+
+           newNode = [3]
+               ↓
+[1] → [2] → [4] → NULL
+         curr
+執行：
+  newNode->next = curr->next;   // [3] → [4]
+  curr->next = newNode;          // [2] → [3]
+插入後：[1] → [2] → [3] → [4] → NULL
+```
+
+### 3.6 刪除節點（刪除值為 target 的第一個節點）
 
 ```cpp
 Node* deleteNode(Node* head, int target) {
